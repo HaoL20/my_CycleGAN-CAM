@@ -1,0 +1,26 @@
+
+python train.py --dataroot /home/lyc/code/HaoL/data/GAN/GTA5_to_cityscape --cuda
+python train.py --dataroot /home/lyc/code/HaoL/LDH/dataset/dataset/syn2city_scale_width/ --cuda
+
+python test.py --dataroot /home/lyc/code/HaoL/data/GAN/GTA5_to_cityscape --cuda
+
+python test.py --dataroot /home/lyc/data/ll/dataset/gta2cityscapes/ --res_dir G2c_100_epoch_1024_512 --model_dir output/ --which_epoch 99 --cuda
+
+python test.py --dataroot /home/lyc/data/ll/dataset/gta2cityscapes/ --res_dir G2C_100_epoch_256 --model_dir output/ --which_epoch 90 --cuda
+
+python test_single.py --dataroot /home/lyc/code/HaoL/data/GTA5/val/images_resize --res_dir exp/test/gta2city_90e_scale_width --model_dir output/ --which_epoch 90 --cuda
+python test_single.py --dataroot /home/lyc/code/HaoL/data/cityscape/leftImg8bit/val/ --res_dir exp/test/C2G_90_epoch_2048_all --model_dir output/ --which_epoch 90 --direction B2A --cuda
+
+python test_batch.py --config configs/gta2city_folder.yaml --input_folder /home/lyc/code/HaoL/data/GTA5/val/images_resize  --output_folder ./res/gta2city  --checkpoint /home/lyc/data/ll/MUNIT/outputs/gta2city/checkpoints/gen_00035000.pt --num_style 1 --a2b 1 --synchronized
+
+##syn2city
+python test_single.py --dataroot /home/lyc/code/HaoL/LDH/dataset/dataset/syn2city_scale_width/train/A/ --res_dir exp/test/syn2city_99e_1024_608 --model_dir /home/lyc/code/HaoL/LDH/CycleGAN/log/train/syn2city/output/ --which_epoch 99 --direction A2B --cuda
+python test_single.py --dataroot /home/lyc/data/HaoL/original/SYNTHIA/SPRING/RGB/ --res_dir /home/lyc/data/HaoL/image_transform/transform/syn2city/CycleGAN --model_dir /home/lyc/code/HaoL/LDH/CycleGAN/log/train/syn2city/output/ --which_epoch 99 --direction A2B --cuda
+
+## syn_sunny2foggy
+python train.py --dataroot /data/zzf/MUNIT/datasets/SYN_sunny2foggy_scale_width/ --cuda
+python test_single.py --dataroot /home/lyc/code/HaoL/LDH/dataset/dataset/SYN_sunny2foggy_scale_width/train/B/ --res_dir exp/test/foggy2sunny_99e_1024_608 --model_dir /home/lyc/code/HaoL/LDH/CycleGAN/log/train/syn_sunny2foggy/output/ --which_epoch 99 --direction B2A --cuda
+
+
+
+
